@@ -1,8 +1,8 @@
 <?php
 
-namespace Database;
+namespace App\Database;
 
-use Common\User;
+use App\Common\User;
 
 interface DatabaseRepository
 {

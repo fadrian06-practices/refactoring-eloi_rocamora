@@ -1,6 +1,6 @@
 <?php
 
-namespace Common;
+namespace App\Common;
 
 class User
 {
@@ -20,5 +20,10 @@ class User
   public function getPassword()
   {
     return $this->password;
+  }
+
+  public function setPassword($password)
+  {
+    $this->password = $password;
   }
 }
