@@ -3,7 +3,7 @@
 namespace App\Application\Services;
 
 use App\Common\User;
-use App\Database\DatabaseRepository;
+use App\Database\UserWriterRepository;
 use App\Hash\PasswordManager;
 use PDOException;
 
@@ -12,7 +12,7 @@ final class RegisterNewUserUseCase
   private $dm;
   private $pm;
 
-  public function __construct(DatabaseRepository $dm, PasswordManager $pm)
+  public function __construct(UserWriterRepository $dm, PasswordManager $pm)
   {
     $this->dm = $dm;
     $this->pm = $pm;

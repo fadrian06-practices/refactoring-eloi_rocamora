@@ -8,7 +8,7 @@ use App\Exceptions\UserNotExistsException;
 use PDO;
 use PDOException;
 
-class MysqlDatabaseRepository implements DatabaseRepository
+class MysqlDatabaseRepository implements UserWriterRepository
 {
   private $conn;
 
