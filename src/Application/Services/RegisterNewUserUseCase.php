@@ -1,13 +1,13 @@
 <?php
 
-namespace App\UsersCont;
+namespace App\Application\Services;
 
 use App\Common\User;
 use App\Database\DatabaseRepository;
 use App\Hash\PasswordManager;
 use PDOException;
 
-class UsersManager
+final class RegisterNewUserUseCase
 {
   private $dm;
   private $pm;
@@ -18,13 +18,14 @@ class UsersManager
     $this->pm = $pm;
   }
 
-  public function checkRegisteredUser($email, $passwd)
+  public function __invoke($email, $passwd)
   {
     try {
+      $password = $this->pm->hashPassword($passwd);
       $user = new User();
+      $user->setPassword($password);
       $user->setEmail($email);
-      $user = $this->dm->getUser($user);
-      $this->pm->checkPassword($user->getPassword(), $passwd);
+      $this->dm->insertUser($user);
     } catch (PDOException $exception) {
       echo "Error: {$exception->getMessage()}";
     }
