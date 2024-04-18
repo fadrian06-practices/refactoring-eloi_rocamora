@@ -1,9 +1,9 @@
 <?php
 
+use App\Application\Services\RegisterNewUserUseCase;
 use App\Database\MysqlDatabaseRepository;
 use App\Exceptions\PersoExceptions;
 use App\Hash\PasswordHashLib;
-use App\UsersCont\UsersManager;
 
 require_once __DIR__ . '/autoload.php';
 
@@ -11,8 +11,8 @@ if ($_POST) {
   try {
     $dbmanager = new MysqlDatabaseRepository();
     $hashmanager = new PasswordHashLib();
-    $user_man = new UsersManager($dbmanager, $hashmanager);
-    $user_man->registerNewUser($_POST['email'], $_POST['password']);
+    $user_man = new RegisterNewUserUseCase($dbmanager, $hashmanager);
+    $user_man($_POST['email'], $_POST['password']);
 
     echo $twig->render('message.twig', ['message' => 'Successful registration']);
   } catch (PersoExceptions $exception) {

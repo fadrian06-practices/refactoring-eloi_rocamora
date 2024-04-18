@@ -1,9 +1,9 @@
 <?php
 
+use App\Application\Services\RegisterNewUserUseCase;
 use App\Database\MysqlDatabaseRepository;
 use App\Exceptions\PersoExceptions;
 use App\Hash\PasswordHashLib;
-use App\UsersCont\UsersManager;
 
 require_once __DIR__ . '/autoload.php';
 
@@ -23,8 +23,8 @@ var_dump($email, $password);
 try {
   $dbmanager = new MysqlDatabaseRepository();
   $hashmanager = new PasswordHashLib();
-  $user_man = new UsersManager($dbmanager, $hashmanager);
-  $user_man->registerNewUser($email, $password);
+  $user_man = new RegisterNewUserUseCase($dbmanager, $hashmanager);
+  $user_man($email, $password);
 
   echo "Successful registration.\n";
 } catch (PersoExceptions $exception) {

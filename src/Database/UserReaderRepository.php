@@ -4,8 +4,7 @@ namespace App\Database;
 
 use App\Common\User;
 
-interface DatabaseRepository
+interface UserReaderRepository
 {
   public function getUser(User $user);
-  public function insertUser(User $user);
 }
