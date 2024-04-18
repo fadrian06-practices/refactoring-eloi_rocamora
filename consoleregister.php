@@ -1,9 +1,9 @@
 <?php
 
-use Database\MysqlDatabaseRepository;
-use Exceptions\PersoExceptions;
-use Hash\PasswordHashLib;
-use UsersCont\UsersManager;
+use App\Database\MysqlDatabaseRepository;
+use App\Exceptions\PersoExceptions;
+use App\Hash\PasswordHashLib;
+use App\UsersCont\UsersManager;
 
 require_once __DIR__ . '/autoload.php';
 
