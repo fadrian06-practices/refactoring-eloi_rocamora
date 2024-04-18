@@ -14,21 +14,21 @@ if ($_POST) {
     $user_man = new UsersManager($dbmanager, $hashmanager);
     $user_man->checkRegisteredUser($_POST['email'], $_POST['password']);
 
-    echo $twig->render('message.twig', array('message' => 'Access granted.'));
+    echo $twig->render('message.twig', ['message' => 'Access granted.']);
   } catch (PersoExceptions $pe) {
-    echo $twig->render('messageback.twig', array(
+    echo $twig->render('messageback.twig', [
       'message' => $pe->getMessage(),
       'ref' => 'login.php',
-      'reftit' => ''
-    ));
+      'reftit' => 'Please try again.'
+    ]);
   }
 } else {
-  echo $twig->render('form.twig', array(
+  echo $twig->render('form.twig', [
     'action' => 'login.php',
     'formtitle' => 'Website Login',
     'subname' => 'Login',
     'back' => 'register.php',
     'note1' => 'New here?',
     'note2' => 'Register for free'
-  ));
+  ]);
 }
