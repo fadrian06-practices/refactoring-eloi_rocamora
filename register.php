@@ -11,7 +11,7 @@ if ($_POST) {
     try {
         $dbmanager = new MysqlDatabaseRepository();
         $passwordHashLib = new PasswordHashLib();
-        $user_man=new UsersManager($dbmanager, $passwordHashLib);
+        $user_man = new UsersManager($dbmanager, $passwordHashLib);
         $user_man->registerNewUser($_POST['email'], $_POST['password']);
 
 

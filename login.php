@@ -13,7 +13,7 @@ if ($_POST) {
         $dbmanager = new MysqlDatabaseRepository();
         $hashmanager = new PasswordHashLib();
 
-        $user_man=new UsersManager($dbmanager, $hashmanager);
+        $user_man = new UsersManager($dbmanager, $hashmanager);
         $user_man->checkRegisteredUser($_POST['email'], $_POST['password']);
         echo $twig->render('message.twig', array('message' => 'Access granted.'));
     } catch (PersoExceptions $pe) {

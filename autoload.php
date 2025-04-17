@@ -2,7 +2,7 @@
 
 error_reporting(~E_DEPRECATED);
 
-require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 Twig_Autoloader::register(); // Enable autoloader
 
