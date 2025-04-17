@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/autoload.php';
 
+use FasLatam\Application\Service\CheckRegisteredUserUseCase;
 use FasLatam\Exceptions\PersoExceptions;
-use FasLatam\UsersCont\UsersManager;
 use FasLatam\Database\MysqlDatabaseRepository;
 use FasLatam\Hash\PasswordHashLib;
 
@@ -15,8 +15,8 @@ if ($_POST !== []) {
         $dbmanager = new MysqlDatabaseRepository();
         $hashmanager = new PasswordHashLib();
 
-        $user_man = new UsersManager($dbmanager, $hashmanager);
-        $user_man->checkRegisteredUser($_POST['email'], $_POST['password']);
+        $user_man = new CheckRegisteredUserUseCase($dbmanager, $hashmanager);
+        $user_man($_POST['email'], $_POST['password']);
         echo $twig->render('message.twig', ['message' => 'Access granted.']);
     } catch (PersoExceptions $pe) {
         echo $twig->render(
