@@ -9,7 +9,7 @@ use FasLatam\Common\User;
 use FasLatam\Exceptions\UserCantRegisterException;
 use FasLatam\Exceptions\UserNotExistsException;
 
-class MysqlDatabaseRepository implements DatabaseRepository
+class MysqlDatabaseRepository implements UserReader, UserWriter
 {
     private readonly PDO $pdo;
 

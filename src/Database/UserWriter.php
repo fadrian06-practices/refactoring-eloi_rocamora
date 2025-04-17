@@ -6,9 +6,7 @@ namespace FasLatam\Database;
 
 use FasLatam\Common\User;
 
-interface DatabaseRepository
+interface UserWriter
 {
-    public function getUser(User $user);
-
     public function insertUser(User $user);
 }

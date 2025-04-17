@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace FasLatam\Application\Service;
 
 use FasLatam\Common\User;
-use FasLatam\Database\DatabaseRepository;
+use FasLatam\Database\UserWriter;
 use FasLatam\Hash\PasswordManager;
 use PDOException;
 
 class RegisterNewUserUseCase
 {
     public function __construct(
-        private readonly DatabaseRepository $databaseRepository,
+        private readonly UserWriter $userWriter,
         private readonly PasswordManager $passwordManager,
     ) {
         // ...
@@ -25,7 +25,7 @@ class RegisterNewUserUseCase
             $user = new User();
             $user->setPassword($password);
             $user->setEmail($email);
-            $this->databaseRepository->insertUser($user);
+            $this->userWriter->insertUser($user);
         } catch (PDOException $pdoException) {
             echo "Error: " . $pdoException->getMessage();
         }
