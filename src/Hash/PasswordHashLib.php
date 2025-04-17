@@ -6,7 +6,7 @@ use FasLatam\Exceptions\UserNotExistsException;
 
 class PasswordHashLib implements PasswordManager
 {
-    public function checkPassword($passdb, $passtocheck)
+    public function checkPassword($passdb, $passtocheck): void
     {
         $saltedPostedPassword = self::SALT . $passtocheck;
         $check = password_verify($saltedPostedPassword, (string) $passdb);
@@ -16,7 +16,7 @@ class PasswordHashLib implements PasswordManager
         }
     }
 
-    public function hashPassword($pass)
+    public function hashPassword($pass): string
     {
         $pass = self::SALT . $pass;
         return password_hash($pass, PASSWORD_DEFAULT);

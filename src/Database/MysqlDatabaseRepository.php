@@ -8,7 +8,7 @@ use FasLatam\Exceptions\UserNotExistsException;
 
 class MysqlDatabaseRepository implements DatabaseRepository
 {
-    private $con;
+    private readonly \PDO $con;
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
     }
 
 
-    public function getUser(User $user)
+    public function getUser(User $user): User
     {
         $query = "SELECT email, password FROM users WHERE email = ? LIMIT 1";
         $stmt = $this->con->prepare($query);
@@ -39,7 +39,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         }
     }
 
-    public function insertUser(User $user)
+    public function insertUser(User $user): string
     {
         // insert command
         $query = "INSERT INTO users SET email = ?, password = ?";
@@ -57,7 +57,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         }
     }
 
-    private function existUser($num)
+    private function existUser($num): bool
     {
         return $num == 1;
     }

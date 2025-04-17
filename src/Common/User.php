@@ -15,7 +15,7 @@ class User
     }
 
     /** @param mixed $email */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
@@ -27,7 +27,7 @@ class User
     }
 
     /** @param mixed $password .... */
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = $password;
     }

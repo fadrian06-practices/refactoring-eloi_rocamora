@@ -12,7 +12,7 @@ class UsersManager
     {
     }
 
-    public function checkRegisteredUser($email, $passwd)
+    public function checkRegisteredUser($email, $passwd): void
     {
         try {
             $user = new User();
@@ -24,7 +24,7 @@ class UsersManager
         }
     }
 
-    public function registerNewUser($email, $passwd)
+    public function registerNewUser($email, $passwd): void
     {
         try {
             $password = $this->pm->hashPassword($passwd);
