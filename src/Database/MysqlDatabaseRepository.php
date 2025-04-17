@@ -31,12 +31,10 @@ class MysqlDatabaseRepository implements DatabaseRepository
 
         if (!$this->existUser($stmt->rowCount())) {
             throw new UserNotExistsException;
-        } else {
-            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-            $user->setPassword($row['password']);
-
-            return $user;
         }
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $user->setPassword($row['password']);
+        return $user;
     }
 
     public function insertUser(User $user): string
@@ -52,9 +50,8 @@ class MysqlDatabaseRepository implements DatabaseRepository
         // execute the query
         if ($stmt->execute()) {
             return "Successful registration.";
-        } else {
-            throw new UserCantRegisterException;
         }
+        throw new UserCantRegisterException;
     }
 
     private function existUser($num): bool
