@@ -11,7 +11,7 @@ class UsersManager
     private $dm;
     private $pm;
 
-    function __construct(DatabaseRepository $dm, PasswordManager $pm)
+    public function __construct(DatabaseRepository $dm, PasswordManager $pm)
     {
         $this->dm = $dm;
         $this->pm = $pm;

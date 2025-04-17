@@ -10,7 +10,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
 {
     private $con;
 
-    function __construct()
+    public function __construct()
     {
         $host = "localhost";
         $db_name = "test";
