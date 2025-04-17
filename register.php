@@ -1,15 +1,13 @@
 <?php
+
 require_once __DIR__ . '/autoload.php';
-use Database\MysqlDatabaseRepository;
-use Hash\PasswordHashLib;
-use Exceptions\PersoExceptions;
-use UsersCont\UsersManager;
 
-
-
+use FasLatam\Database\MysqlDatabaseRepository;
+use FasLatam\Hash\PasswordHashLib;
+use FasLatam\Exceptions\PersoExceptions;
+use FasLatam\UsersCont\UsersManager;
 
 if ($_POST) {
-
     try {
 
         $dbmanager = new MysqlDatabaseRepository();

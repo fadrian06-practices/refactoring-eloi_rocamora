@@ -1,17 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Eloi
- * Date: 24/5/15
- * Time: 17:07
- */
 
-namespace Database;
+namespace FasLatam\Database;
 
-
-use Common\User;
-use Exceptions\UserCantRegisterException;
-use Exceptions\UserNotExistsException;
+use FasLatam\Common\User;
+use FasLatam\Exceptions\UserCantRegisterException;
+use FasLatam\Exceptions\UserNotExistsException;
 
 class MysqlDatabaseRepository implements DatabaseRepository
 {

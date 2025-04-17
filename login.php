@@ -1,9 +1,11 @@
 <?php
+
 require_once __DIR__ . '/autoload.php';
-use Exceptions\PersoExceptions;
-use UsersCont\UsersManager;
-use Database\MysqlDatabaseRepository;
-use Hash\PasswordHashLib;
+
+use FasLatam\Exceptions\PersoExceptions;
+use FasLatam\UsersCont\UsersManager;
+use FasLatam\Database\MysqlDatabaseRepository;
+use FasLatam\Hash\PasswordHashLib;
 
 // form is submitted, check if acess will be granted
 if ($_POST) {

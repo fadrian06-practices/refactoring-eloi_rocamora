@@ -1,6 +1,14 @@
 {
-  "require": {
-    "twig/twig": "~1.0",
-    "ircmaxell/password-compat": "~1.0.4"
-  }
+    "require": {
+        "twig/twig": "~1.0",
+        "ircmaxell/password-compat": "~1.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "FasLatam\\": "src"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
 }

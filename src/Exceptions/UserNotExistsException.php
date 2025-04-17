@@ -1,7 +1,6 @@
 <?php
 
-namespace Exceptions;
-
+namespace FasLatam\Exceptions;
 
 class UserNotExistsException extends PersoExceptions
 {

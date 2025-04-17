@@ -1,10 +1,10 @@
 <?php
 
-namespace Hash;
-use Exceptions\UserNotExistsException;
+namespace FasLatam\Hash;
 
+use FasLatam\Exceptions\UserNotExistsException;
 
-class PasswordHashLib implements  PasswordManager{
+class PasswordHashLib implements PasswordManager{
     public function checkPassword($passdb, $passtocheck)
     {
         $saltedPostedPassword = SELF::SALT.$passtocheck;
@@ -13,7 +13,6 @@ class PasswordHashLib implements  PasswordManager{
         if (!$check) {
             throw new UserNotExistsException;
         }
-
     }
 
     public function hashPassword($pass)
@@ -21,6 +20,4 @@ class PasswordHashLib implements  PasswordManager{
         $pass= SELF::SALT.$pass;
         return password_hash($pass,PASSWORD_DEFAULT);
     }
-
-
 }

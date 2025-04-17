@@ -1,10 +1,11 @@
 <?php
-require_once __DIR__ . '/autoload.php';
-use Database\MysqlDatabaseRepository;
-use Hash\PasswordHashLib;
-use Exceptions\PersoExceptions;
-use UsersCont\UsersManager;
 
+require_once __DIR__ . '/autoload.php';
+
+use FasLatam\Database\MysqlDatabaseRepository;
+use FasLatam\Hash\PasswordHashLib;
+use FasLatam\Exceptions\PersoExceptions;
+use FasLatam\UsersCont\UsersManager;
 
 echo "WELCOME TO REGISTER UTILITY\n";
 echo "Put your Username: ";

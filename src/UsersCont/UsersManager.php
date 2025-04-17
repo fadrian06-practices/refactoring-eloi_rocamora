@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Eloi
- * Date: 24/5/15
- * Time: 23:12
- */
 
-namespace UsersCont;
+namespace FasLatam\UsersCont;
 
-use Database\DatabaseRepository;
-use Common\User;
-use Hash\PasswordManager;
+use FasLatam\Database\DatabaseRepository;
+use FasLatam\Common\User;
+use FasLatam\Hash\PasswordManager;
 
 class UsersManager
 {

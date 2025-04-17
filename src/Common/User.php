@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Eloi
- * Date: 24/5/15
- * Time: 16:43
- */
 
-namespace Common;
-
+namespace FasLatam\Common;
 
 class User
 {
