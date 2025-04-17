@@ -7,7 +7,9 @@ use Rector\Config\RectorConfig;
 return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
+        __DIR__ . '/templates',
     ])
+    ->withComposerBased(twig: true)
     ->withFluentCallNewLine()
     ->withImportNames(removeUnusedImports: true)
     ->withPhpSets(php82: true)

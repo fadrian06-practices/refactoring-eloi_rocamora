@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+use Twig\Extension\DebugExtension;
+
 error_reporting(~E_DEPRECATED);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-Twig_Autoloader::register(); // Enable autoloader
-
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
-$twig = new Twig_Environment($loader, ['debug' => true]);
-$twig->addExtension(new Twig_Extension_Debug());
+$loader = new FilesystemLoader(__DIR__ . '/templates');
+$twig = new Environment($loader, ['debug' => true]);
+$twig->addExtension(new DebugExtension());

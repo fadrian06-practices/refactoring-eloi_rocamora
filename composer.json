@@ -1,6 +1,6 @@
 {
     "require": {
-        "twig/twig": "~1.0",
+        "twig/twig": "^3.20",
         "ircmaxell/password-compat": "~1.0.4"
     },
     "autoload": {
