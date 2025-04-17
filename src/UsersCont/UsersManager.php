@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FasLatam\UsersCont;
 
 use FasLatam\Database\DatabaseRepository;
