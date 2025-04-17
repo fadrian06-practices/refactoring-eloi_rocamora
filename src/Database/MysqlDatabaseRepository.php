@@ -32,6 +32,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         if (!$this->existUser($stmt->rowCount())) {
             throw new UserNotExistsException;
         }
+
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
         $user->setPassword($row['password']);
         return $user;
@@ -51,6 +52,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         if ($stmt->execute()) {
             return "Successful registration.";
         }
+
         throw new UserCantRegisterException;
     }
 
