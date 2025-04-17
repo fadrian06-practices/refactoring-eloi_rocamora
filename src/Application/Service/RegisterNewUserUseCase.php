@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FasLatam\UsersCont;
+namespace FasLatam\Application\Service;
 
-use PDOException;
-use FasLatam\Database\DatabaseRepository;
 use FasLatam\Common\User;
+use FasLatam\Database\DatabaseRepository;
 use FasLatam\Hash\PasswordManager;
+use PDOException;
 
-class UsersManager
+class RegisterNewUserUseCase
 {
     public function __construct(
         private readonly DatabaseRepository $databaseRepository,
@@ -18,13 +18,14 @@ class UsersManager
         // ...
     }
 
-    public function checkRegisteredUser($email, $passwd): void
+    public function __invoke($email, $passwd): void
     {
         try {
+            $password = $this->passwordManager->hashPassword($passwd);
             $user = new User();
+            $user->setPassword($password);
             $user->setEmail($email);
-            $user = $this->databaseRepository->getUser($user);
-            $this->passwordManager->checkPassword($user->getPassword(), $passwd);
+            $this->databaseRepository->insertUser($user);
         } catch (PDOException $pdoException) {
             echo "Error: " . $pdoException->getMessage();
         }

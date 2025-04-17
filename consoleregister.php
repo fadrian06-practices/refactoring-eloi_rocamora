@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/autoload.php';
 
+use FasLatam\Application\Service\RegisterNewUserUseCase;
 use FasLatam\Database\MysqlDatabaseRepository;
 use FasLatam\Hash\PasswordHashLib;
 use FasLatam\Exceptions\PersoExceptions;
-use FasLatam\UsersCont\UsersManager;
 
 echo "WELCOME TO REGISTER UTILITY\n";
 echo "Put your Username: ";
@@ -25,8 +25,8 @@ var_dump($email, $password);
 try {
     $dbmanager = new MysqlDatabaseRepository();
     $hashmanager = new PasswordHashLib();
-    $user_man = new UsersManager($dbmanager, $hashmanager);
-    $user_man->registerNewUser($email, $password);
+    $user_man = new RegisterNewUserUseCase($dbmanager, $hashmanager);
+    $user_man($email, $password);
 
     echo "Successful registration. \n";
 } catch (PersoExceptions) {

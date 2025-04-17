@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/autoload.php';
 
+use FasLatam\Application\Service\RegisterNewUserUseCase;
 use FasLatam\Database\MysqlDatabaseRepository;
 use FasLatam\Hash\PasswordHashLib;
 use FasLatam\Exceptions\PersoExceptions;
-use FasLatam\UsersCont\UsersManager;
 
 if ($_POST !== []) {
     try {
         $dbmanager = new MysqlDatabaseRepository();
         $passwordHashLib = new PasswordHashLib();
-        $user_man = new UsersManager($dbmanager, $passwordHashLib);
-        $user_man->registerNewUser($_POST['email'], $_POST['password']);
-
+        $user_man = new RegisterNewUserUseCase($dbmanager, $passwordHashLib);
+        $user_man($_POST['email'], $_POST['password']);
 
         echo $twig->render('message.twig', ['message' => 'Successful registration']);
     } catch (PersoExceptions $exception) {
