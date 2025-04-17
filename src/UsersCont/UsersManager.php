@@ -11,8 +11,11 @@ use FasLatam\Hash\PasswordManager;
 
 class UsersManager
 {
-    public function __construct(private readonly DatabaseRepository $databaseRepository, private readonly PasswordManager $passwordManager)
-    {
+    public function __construct(
+        private readonly DatabaseRepository $databaseRepository,
+        private readonly PasswordManager $passwordManager,
+    ) {
+        // ...
     }
 
     public function checkRegisteredUser($email, $passwd): void
