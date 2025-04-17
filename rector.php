@@ -23,4 +23,6 @@ return RectorConfig::configure()
         strictBooleans: true,
         rectorPreset: true,
     )
+    ->withRealPathReporting()
+    ->withRootFiles()
 ;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require_once __DIR__ . '/autoload.php';
 
 use FasLatam\Database\MysqlDatabaseRepository;
@@ -27,6 +29,6 @@ try {
     $user_man->registerNewUser($email, $password);
 
     echo "Successful registration. \n";
-} catch (PersoExceptions $exception) {
+} catch (PersoExceptions) {
     echo "Please try again.";
 }
