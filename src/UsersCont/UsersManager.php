@@ -24,11 +24,9 @@ class UsersManager
             $user->setEmail($email);
             $user = $this->dm->getUser($user);
             $this->pm->checkPassword($user->getPassword(), $passwd);
-
         } catch (\PDOException $exception) {
             echo "Error: " . $exception->getMessage();
         }
-
     }
 
     public function registerNewUser($email, $passwd)

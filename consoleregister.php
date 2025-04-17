@@ -21,14 +21,12 @@ $password = trim($line);
 var_dump($email, $password);
 
 try {
+    $dbmanager = new MysqlDatabaseRepository();
+    $hashmanager = new PasswordHashLib();
+    $user_man = new UsersManager($dbmanager, $hashmanager);
+    $user_man->registerNewUser($email, $password);
 
-  $dbmanager = new MysqlDatabaseRepository();
-  $hashmanager = new PasswordHashLib();
-  $user_man = new UsersManager($dbmanager, $hashmanager);
-  $user_man->registerNewUser($email, $password);
-
-  echo "Successful registration. \n";
-
+    echo "Successful registration. \n";
 } catch (PersoExceptions $exception) {
-  echo "Please try again.";
+    echo "Please try again.";
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
+  <arg name="colors" />
+  <arg name="tab-width" value="2" />
+  <file>src</file>
+  <file>autoload.php</file>
+  <file>consoleregister.php</file>
+  <file>login.php</file>
+  <file>register.php</file>
+  <exclude-pattern>vendor</exclude-pattern>
+  <exclude-pattern>.idea</exclude-pattern>
+  <exclude-pattern>.git</exclude-pattern>
+
+  <rule ref="PSR1" />
+  <rule ref="PSR2" />
+</ruleset>
