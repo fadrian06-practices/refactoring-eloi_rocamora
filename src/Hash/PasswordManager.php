@@ -6,7 +6,7 @@ namespace FasLatam\Hash;
 
 interface PasswordManager
 {
-    const SALT = 'ilovecodeofninjabymikedalisay';
+    public const string SALT = 'ilovecodeofninjabymikedalisay';
 
     public function checkPassword($passdb, $passtocheck);
 

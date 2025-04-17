@@ -14,7 +14,7 @@ class PasswordHashLib implements PasswordManager
         $check = password_verify($saltedPostedPassword, (string) $passdb);
 
         if (!$check) {
-            throw new UserNotExistsException;
+            throw new UserNotExistsException();
         }
     }
 

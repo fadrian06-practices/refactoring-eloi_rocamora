@@ -33,7 +33,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         $stmt->execute();
 
         if (!$this->existUser($stmt->rowCount())) {
-            throw new UserNotExistsException;
+            throw new UserNotExistsException();
         }
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
             return "Successful registration.";
         }
 
-        throw new UserCantRegisterException;
+        throw new UserCantRegisterException();
     }
 
     private function existUser($num): bool

@@ -12,7 +12,7 @@ return RectorConfig::configure()
     ->withComposerBased(twig: true)
     ->withFluentCallNewLine()
     ->withImportNames(removeUnusedImports: true)
-    ->withPhpSets(php82: true)
+    ->withPhpSets(php83: true)
     ->withPreparedSets(
         deadCode: true,
         codeQuality: true,
