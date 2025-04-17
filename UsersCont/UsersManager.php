@@ -31,7 +31,7 @@ class UsersManager
             $user = $this->dm->getUser($user);
             $this->pm->checkPassword($user->getPassword(), $passwd);
 
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo "Error: " . $exception->getMessage();
         }
 
@@ -45,7 +45,7 @@ class UsersManager
             $user->setPassword($password);
             $user->setEmail($email);
             $this->dm->insertUser($user);
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo "Error: " . $exception->getMessage();
         }
     }

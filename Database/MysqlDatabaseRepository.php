@@ -21,8 +21,8 @@ class MysqlDatabaseRepository implements DatabaseRepository
     {
         $host = "localhost";
         $db_name = "test";
-        $username = "vagrant";
-        $password = "";
+        $username = "root";
+        $password = null;
 
         try {
             $this->con = new \PDO("mysql:host={$host};dbname={$db_name}", $username, $password);
@@ -34,13 +34,13 @@ class MysqlDatabaseRepository implements DatabaseRepository
 
     public function getUser(User $user)
     {
-        $query = "SELECT email password FROM users WHERE email = ? LIMIT 1";
+        $query = "SELECT email, password FROM users WHERE email = ? LIMIT 1";
         $stmt = $this->con->prepare($query);
 
         $stmt->bindValue(1, $user->getEmail());
         $stmt->execute();
 
-        if ($this->existUser($stmt->rowCount())) {
+        if (!$this->existUser($stmt->rowCount())) {
             throw new UserNotExistsException;
         } else {
             $row = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -70,6 +70,6 @@ class MysqlDatabaseRepository implements DatabaseRepository
 
     private function existUser($num)
     {
-        return $num == 0;
+        return $num == 1;
     }
 }
