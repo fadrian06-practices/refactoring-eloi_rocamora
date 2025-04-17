@@ -8,13 +8,8 @@ use FasLatam\Hash\PasswordManager;
 
 class UsersManager
 {
-    private $dm;
-    private $pm;
-
-    public function __construct(DatabaseRepository $dm, PasswordManager $pm)
+    public function __construct(private readonly DatabaseRepository $dm, private readonly PasswordManager $pm)
     {
-        $this->dm = $dm;
-        $this->pm = $pm;
     }
 
     public function checkRegisteredUser($email, $passwd)

@@ -9,7 +9,7 @@ class PasswordHashLib implements PasswordManager
     public function checkPassword($passdb, $passtocheck)
     {
         $saltedPostedPassword = self::SALT . $passtocheck;
-        $check = password_verify($saltedPostedPassword, $passdb);
+        $check = password_verify($saltedPostedPassword, (string) $passdb);
 
         if (!$check) {
             throw new UserNotExistsException;

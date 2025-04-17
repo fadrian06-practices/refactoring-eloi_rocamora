@@ -8,6 +8,7 @@
   <file>autoload.php</file>
   <file>consoleregister.php</file>
   <file>login.php</file>
+  <file>rector.php</file>
   <file>register.php</file>
   <exclude-pattern>vendor</exclude-pattern>
   <exclude-pattern>.idea</exclude-pattern>
