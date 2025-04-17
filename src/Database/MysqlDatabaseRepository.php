@@ -23,7 +23,6 @@ class MysqlDatabaseRepository implements UserReader, UserWriter
         $this->pdo = new PDO(sprintf('mysql:host=%s;dbname=%s', $host, $db_name), $username, $password);
     }
 
-
     public function getUser(User $user): User
     {
         $query = "SELECT email, password FROM users WHERE email = ? LIMIT 1";
