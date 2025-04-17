@@ -8,7 +8,7 @@ use FasLatam\Hash\PasswordManager;
 
 class UsersManager
 {
-    public function __construct(private readonly DatabaseRepository $dm, private readonly PasswordManager $pm)
+    public function __construct(private readonly DatabaseRepository $databaseRepository, private readonly PasswordManager $passwordManager)
     {
     }
 
@@ -17,8 +17,8 @@ class UsersManager
         try {
             $user = new User();
             $user->setEmail($email);
-            $user = $this->dm->getUser($user);
-            $this->pm->checkPassword($user->getPassword(), $passwd);
+            $user = $this->databaseRepository->getUser($user);
+            $this->passwordManager->checkPassword($user->getPassword(), $passwd);
         } catch (\PDOException $pdoException) {
             echo "Error: " . $pdoException->getMessage();
         }
@@ -27,11 +27,11 @@ class UsersManager
     public function registerNewUser($email, $passwd): void
     {
         try {
-            $password = $this->pm->hashPassword($passwd);
+            $password = $this->passwordManager->hashPassword($passwd);
             $user = new User();
             $user->setPassword($password);
             $user->setEmail($email);
-            $this->dm->insertUser($user);
+            $this->databaseRepository->insertUser($user);
         } catch (\PDOException $pdoException) {
             echo "Error: " . $pdoException->getMessage();
         }
