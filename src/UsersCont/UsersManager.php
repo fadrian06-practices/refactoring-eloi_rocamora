@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace FasLatam\UsersCont;
 
+use PDOException;
 use FasLatam\Database\DatabaseRepository;
 use FasLatam\Common\User;
 use FasLatam\Hash\PasswordManager;
@@ -21,7 +22,7 @@ class UsersManager
             $user->setEmail($email);
             $user = $this->databaseRepository->getUser($user);
             $this->passwordManager->checkPassword($user->getPassword(), $passwd);
-        } catch (\PDOException $pdoException) {
+        } catch (PDOException $pdoException) {
             echo "Error: " . $pdoException->getMessage();
         }
     }
@@ -34,7 +35,7 @@ class UsersManager
             $user->setPassword($password);
             $user->setEmail($email);
             $this->databaseRepository->insertUser($user);
-        } catch (\PDOException $pdoException) {
+        } catch (PDOException $pdoException) {
             echo "Error: " . $pdoException->getMessage();
         }
     }

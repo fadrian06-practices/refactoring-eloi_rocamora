@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace FasLatam\Database;
 
+use PDO;
 use FasLatam\Common\User;
 use FasLatam\Exceptions\UserCantRegisterException;
 use FasLatam\Exceptions\UserNotExistsException;
 
 class MysqlDatabaseRepository implements DatabaseRepository
 {
-    private readonly \PDO $pdo;
+    private readonly PDO $pdo;
 
     public function __construct()
     {
@@ -19,7 +20,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         $username = "root";
         $password = null;
 
-        $this->pdo = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $db_name), $username, $password);
+        $this->pdo = new PDO(sprintf('mysql:host=%s;dbname=%s', $host, $db_name), $username, $password);
     }
 
 
@@ -35,7 +36,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
             throw new UserNotExistsException;
         }
 
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $user->setPassword($row['password']);
         return $user;
     }
