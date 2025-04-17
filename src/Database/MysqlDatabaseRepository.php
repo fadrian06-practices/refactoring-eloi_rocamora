@@ -17,7 +17,7 @@ class MysqlDatabaseRepository implements DatabaseRepository
         $username = "root";
         $password = null;
 
-        $this->con = new \PDO("mysql:host={$host};dbname={$db_name}", $username, $password);
+        $this->con = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $db_name), $username, $password);
     }
 
 

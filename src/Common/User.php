@@ -5,6 +5,7 @@ namespace FasLatam\Common;
 class User
 {
     private $email;
+
     private $password;
 
     /** @return mixed ... */
